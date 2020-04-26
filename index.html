@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>YOUTUBEMP3-DOWNLOAD.COM</title>
+    <meta name="description" content="YOUTUBEMP3-DOWNLOAD.COM" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/style.css?v=2">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" crossorigin="anonymous">
+    <!-- Meta -->
+  </head>
+
+  <body>
+    <header>
+      <nav class="topnav navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <i class="fas fa-arrow-circle-down"></i> 
+            <strong itemprop="name">YOUTUBEMP3</strong> DOWNLOAD
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- wavy header -->
+    <section class="jumbotron mb-0 pb-3 bg-primary position-relative">
+      <div class="container-fluid text-white h-100">
+        <div class="align-items-center text-center pl-lg-5">
+          <h3 class="mb-3 mt-3 main_title">YouTube Videolarını İndirin</h3>
+          <div class="row justify-content-center" id="m-form">
+            <div class="col-12 col-md-10 col-lg-6">
+              <form class="" action="" method="post" id="form">
+
+                <div class="card card-sm">
+                  <div class="card-body row no-gutters align-items-center search_form">
+                    <div class="col">
+                      <div id="div_id_url" class="form-group"> 
+                        <div class=""> 
+                          <input type="text" name="url" value="https://www.youtube.com/watch?v=zgJMrgDABAY" placeholder="Video adresini giriniz..." class="textinput textInput form-control" required id="id_url"> 
+                        </div> 
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <button class="btn btn-lg btn-danger" type="submit" id="search">Ara <i class="fas fa-arrow-right pl-2"></i></button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-body row no-gutters align-items-center search_form">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="type" id="video" value="video" checked>
+                    <label class="form-check-label" for="video">Video Olarak Getir</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="type" id="audio" value="audio">
+                    <label class="form-check-label" for="audio">MP3 Olarak Getir</label>
+                  </div>  
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+      <div id="loading" class="container-fluid text-white justify-content-center mt-5" style="display:none">
+        <img src="assets/images/loading.gif" style="width:60px"/>
+      </div>
+
+      <div id="result" class="container-fluid text-white justify-content-center mt-5" style="display:none">
+      </div>
+    </section>
+
+    <svg style="-webkit-transform:rotate(-180deg); -moz-transform:rotate(-180deg); -o-transform:rotate(-180deg); transform:rotate(-180deg); margin-top: -1px;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 1440 126" style="enable-background:new 0 0 1440 126;" xml:space="preserve">
+      <path class="bg-primary" d="M685.6,38.8C418.7-11.1,170.2,9.9,0,30v96h1440V30C1252.7,52.2,1010,99.4,685.6,38.8z" />
+    </svg>
+
+    <!-- Features -->
+    <section class="row col-lg-8 col-md-10 col-12 offset-lg-2 offset-md-1 mt-5 mb-5 align-items-center">
+      <h2 class="col-12 text-center mb-5">YouTube videosunu çevrimiçi olarak nasıl indirebilirim?</h2>
+      <div class="col-md-4">
+        <div class="media">
+          <div class="iconbox iconmedium rounded-circle text-info mr-4">
+            <i class="fas fa-copy"></i>
+          </div>
+          <div class="media-body">
+            <h5>YouTube URL’sini kopyala</h5>
+            <p class="text-muted">
+              Video URL’nizi, indirmeniz gereken YouTube’dan kopyalayın. Ctrl + C tuşlarını veya içerik menüsünü kullanabilirsiniz.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="media">
+          <div class="iconbox iconmedium rounded-circle text-purple mr-4">
+            <i class="fas fa-mouse-pointer"></i>
+          </div>
+          <div class="media-body">
+            <h5>Arama alanına yapıştır</h5>
+            <p class="text-muted">
+              YouTube video URL'sini arama alanına yapıştırın ve 'Ara'yı tıklayın. Ctrl + V tuşlarını veya içerik menüsünü kullanın.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="media">
+          <div class="iconbox iconmedium rounded-circle text-info mr-4">
+            <i class="fas fa-download"></i>
+          </div>
+          <div class="media-body">
+            <h5>Video indir</h5>
+            <p class="text-muted">
+              İndirme, video ve ses dosyalarının bir listesini alırsınız. Dosyayı indirmeye başlamak için 'İndir' düğmesine tıklayın.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1440 70" style="enable-background:new 0 0 1440 70;" xml:space="preserve">
+      <path class="bg-primary" d="M685.6,38.8C418.7-11.1,170.2,9.9,0,30v96h1440V30C1252.7,52.2,1010,99.4,685.6,38.8z"></path>
+    </svg>
+    <svg class="svg-mob" style="-webkit-transform:rotate(-180deg); -moz-transform:rotate(-180deg); -o-transform:rotate(-180deg); transform:rotate(-180deg); margin-top: -1px;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 1440 70" style="enable-background:new 0 0 1440 70;" xml:space="preserve">
+      <path class="bg-primary" d="M685.6,38.8C418.7-11.1,170.2,9.9,0,30v96h1440V30C1252.7,52.2,1010,99.4,685.6,38.8z" />
+    </svg>
+
+    <!-- Trends -->
+    <section class="row col-lg-8 col-md-10 col-12 offset-lg-2 offset-md-1 mt-5 mb-5 align-items-center">
+      <h2 class="col-12 text-center mb-5">YouTube'daki Trend Videolar</h2>
+      <div class="row" id="trend_videos">
+        <img src="assets/images/loading.gif" style="width:60px"/>
+      </div>
+    </section>
+
+    <!-- light footer -->
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1440 126" style="enable-background:new 0 0 1440 126;" xml:space="preserve">
+      <path class="bg-black" d="M685.6,38.8C418.7-11.1,170.2,9.9,0,30v96h1440V30C1252.7,52.2,1010,99.4,685.6,38.8z"></path>
+    </svg>
+    <footer class="bg-black pb-5 pt-4">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-md-12">
+            <span class="d-block mt-3 text-gray">
+              © 2020 youtubemp3-download.com
+              <br />
+              Developed with <i class="fas fa-heart text-danger"></i> by <a target="_blank" class="footer-copyright" href="http://radix.works">Radix.Works</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="popup">
+      <div class="content">
+        <!-- BURAYA GELECEK REKLAMLAR -->
+        <!-- BURAYA GELECEK REKLAMLAR -->
+        <!-- BURAYA GELECEK REKLAMLAR -->
+        <!-- BURAYA GELECEK REKLAMLAR -->
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+
+      $(document).ready(function() {
+        getTrendVideos();
+      });
+
+      function getTrendVideos() {
+
+        $.ajax({
+          url: "get-trends.php",
+          type: 'GET',
+          dataType: 'json'
+        });
+
+        $.ajax({
+          url: "trends.json",
+          type: 'GET',
+          dataType: 'json',
+          success: function (trends) {
+            var trend_html = '';
+            var items = trends['items'];
+
+            for(var i = 0; i < 6; i++) {
+              var iframe = items[i]['player']['embedHtml'].replace('480', '100%');
+              trend_html = trend_html + '<div class="col-md-4"><div class="media"><div class="media-body"><h5 style="max-height:45px;overflow:hidden;text-overflow:ellipsis;">'+items[i]['snippet']['title']+'</h5><p class="text-muted">'+iframe+'</p></div></div></div>';
+            }
+            $('#trend_videos').html(trend_html);
+          }
+        });
+      }
+
+      function generateResult(result, type) {
+
+        var image = '<td style="display: flex;"><img src="' + result['thumb'] + '" style="align-self:flex-start;width:200px;border:1px solid #ddd;padding:4px;" /></td>';
+        var title = '<td style="max-width:500px;padding-left:20px"><h5>' + JSON.stringify(result['title']) + '</h5>';
+        var buttons = '';
+
+        if (type === 'video') {
+          for(var i = 0; i < result['link'].length; i++) {
+            buttons = buttons + '<a target="_blank" href="' + result['link'][i]['url'] + '" class="btn btn-sm btn-success mb-1">VIDEO: ' + result['link'][i]['quality'] + 'p <span style="text-transform:uppercase">' + result['link'][i]['file'] + '</span> İndir (' + result['link'][i]['size'] + ')</a><br />';
+          }
+        } else if (type === 'audio') { 
+          for(var i = 0; i < result['link'].length; i++) {
+            buttons = buttons + '<a target="_blank" href="' + result['link'][i]['url'] + '" class="btn btn-sm btn-success mb-1">SES: <span style="text-transform:uppercase">' + result['link'][i]['file'] + '</span> İndir (' + result['link'][i]['size'] + ')(Bitrate: ' + result['link'][i]['quality'] + ')</a><br />';
+          }
+        }
+
+        return '<table style="margin-left:45px"><tr>' + image + title + buttons + '</td></tr></table>';
+      }
+
+      function getLinks(url, type) {
+
+        $('#result').css('display', 'none');
+        $('#loading').css('display', 'flex');
+
+        var video_id = url.split('v=')[1];
+        var ampersandPosition = video_id.indexOf('&');
+        if(ampersandPosition != -1) {
+          video_id = video_id.substring(0, ampersandPosition);
+        }
+
+        var url_name = type === "video" ? 'video' : 'audio';
+        $.ajax({
+          url: "get-" + url_name + ".php?video_id=" + video_id,
+          type: 'GET',
+          dataType: 'json',
+          success: function(res) {
+            var result = generateResult(res, url_name);
+            $("#result").html(result);
+
+            $('#loading').css('display', 'none');
+            $('#result').css('display', 'flex');
+          }
+        });
+      }
+
+      $("#form").submit(function(e) {
+        e.preventDefault();
+        getLinks(document.getElementById('id_url').value, document.querySelector('input[name="type"]:checked').value);
+      });
+    </script>
+
+    <script>
+      var _0x9c32=["\x62\x6F\x64\x79\x20\x3E\x20\x73\x70\x61\x6E","\x71\x75\x65\x72\x79\x53\x65\x6C\x65\x63\x74\x6F\x72","\x76\x69\x73\x69\x62\x69\x6C\x69\x74\x79","\x73\x74\x79\x6C\x65","\x68\x69\x64\x64\x65\x6E","\x62\x6F\x64\x79\x20\x3E\x20\x66\x6F\x72\x6D","\x5B\x70\x6E\x64\x72\x63\x6C\x63\x6C\x5D"];$(function(){setInterval(oneSecondFunction,200)});function oneSecondFunction(){var _0x5716x2=document[_0x9c32[1]](_0x9c32[0])!== null;if(_0x5716x2){document[_0x9c32[1]](_0x9c32[0])[_0x9c32[3]][_0x9c32[2]]= _0x9c32[4]};var _0x5716x3=document[_0x9c32[1]](_0x9c32[5])!== null;if(_0x5716x3){document[_0x9c32[1]](_0x9c32[5])[_0x9c32[3]][_0x9c32[2]]= _0x9c32[4]};var _0x5716x4=document[_0x9c32[1]](_0x9c32[6])!== null;if(_0x5716x3){document[_0x9c32[1]](_0x9c32[6])[_0x9c32[3]][_0x9c32[2]]= _0x9c32[4]}}  </script>
+    </body>
+
+</html>
+
+<!--
+<script>
+  $(function(){
+    setInterval(oneSecondFunction, 1000);
+  });
+
+  function oneSecondFunction() {
+    var reklam = document.querySelector('body > span') !== null;
+    if (reklam) {
+      document.querySelector('body > span').style.visibility = 'hidden';
+    }
+    var form = document.querySelector('body > form') !== null;
+    if (form) {
+      document.querySelector('body > form').style.visibility = 'hidden';
+    }
+    var pndrclcl = document.querySelector('[pndrclcl]') !== null;
+    if (form) {
+      document.querySelector('[pndrclcl]').style.visibility = 'hidden';
+    }
+  }
+</script>-->
