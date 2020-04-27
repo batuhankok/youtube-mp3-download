@@ -1,30 +1,50 @@
 <?php
+@header('Content-Type: text/html; charset=utf-8');
 
 if (empty($_GET['video_id'])) {
   die("Video ID boş bırakılamaz.");
 }
 
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, 'https://www.yt-mp3s.com/@api/json/videostreams/' . $_GET['video_id']);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-$video_response = curl_exec($curl);
-curl_close($curl);
+require __DIR__.'/vendor/autoload.php';
 
-$video_array = json_decode($video_response, JSON_UNESCAPED_SLASHES);
+use YouTube\YouTubeDownloader;
+
+$yt = new YouTubeDownloader();
+
+$url = "https://www.youtube.com/watch?v=" . $_GET['video_id'];
+$links = $yt->getDownloadLinks($url);
+
+$hd_exists = false;
+$hd_url = "";
 
 $video_link_array = [];
-foreach ($video_array['vidInfo'] as $video_info) {
-  $quality_array = ['1080', '720', '480'];
-  $file_type_array = ['mp4'];
-  if (in_array($video_info['quality'], $quality_array) && in_array($video_info['ftype'], $file_type_array)) {
-    $video_link_array[] = array("quality" => $video_info['quality'], "url" => $video_info['dloadUrl'], "size" => $video_info['rSize'], "file" => $video_info['ftype']);
+foreach ($links as $video_info) {
+
+  if ($video_info['format'] == 'mp4, video, 360p, audio') {
+    $video_link_array[] = array("quality" => "360", "url" => $video_info['url'], "size" => "", "file" => "mp4");
+  } else if ($video_info['format'] == 'mp4, video, 480p, audio') {
+    $video_link_array[] = array("quality" => "480", "url" => $video_info['url'], "size" => "", "file" => "mp4");
+  } else if ($video_info['format'] == 'mp4, video, 720p, audio') {
+    $hd_exists = true;
+    $video_link_array[] = array("quality" => "720", "url" => $video_info['url'], "size" => "", "file" => "mp4");
+  } else if ($video_info['format'] == 'mp4, video, 1024p, audio') {
+    $video_link_array[] = array("quality" => "1024", "url" => $video_info['url'], "size" => "", "file" => "mp4");
   }
+
+  $hd_url = $video_info['url'];
 }
 
+if (!$hd_exists) {
+  $video_link_array[] = array("quality" => "720", "url" => $hd_url, "size" => "", "file" => "mp4");
+}
+
+$url = 'http://www.youtube.com/oembed?format=json&url=' . $url;
+$json = json_decode(file_get_contents($url), true);
+
 $detail_array = [
-  'title' => $video_array['vidTitle'],
-  'thumb' => $video_array['vidThumb'],
+  'title' => str_replace("\n", "", strip_tags(trim($json['title']))),
+  'thumb' => "http://img.youtube.com/vi/{$_GET['video_id']}/mqdefault.jpg",
   'link' => $video_link_array
 ];
 
-print_r(json_encode($detail_array));
+print_r(json_encode($detail_array, JSON_UNESCAPED_UNICODE));

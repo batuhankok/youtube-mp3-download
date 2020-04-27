@@ -211,11 +211,11 @@
 
         if (type === 'video') {
           for(var i = 0; i < result['link'].length; i++) {
-            buttons = buttons + '<a target="_blank" href="' + result['link'][i]['url'] + '" class="btn btn-sm btn-success mb-1">VIDEO: ' + result['link'][i]['quality'] + 'p <span style="text-transform:uppercase">' + result['link'][i]['file'] + '</span> İndir (' + result['link'][i]['size'] + ')</a><br />';
+            buttons = buttons + '<a target="_blank" href="download-video.php?file=' + encodeURIComponent(result['link'][i]['url']) + '&filename=' + encodeURIComponent(JSON.stringify(result['title'])) + '" class="btn btn-sm btn-success mb-1">VIDEO: ' + result['link'][i]['quality'] + 'p <span style="text-transform:uppercase">' + result['link'][i]['file'] + '</span> Olarak İndir</a><br />';
           }
         } else if (type === 'audio') { 
           for(var i = 0; i < result['link'].length; i++) {
-            buttons = buttons + '<a target="_blank" href="' + result['link'][i]['url'] + '" class="btn btn-sm btn-success mb-1">SES: <span style="text-transform:uppercase">' + result['link'][i]['file'] + '</span> İndir (' + result['link'][i]['size'] + ')(Bitrate: ' + result['link'][i]['quality'] + ')</a><br />';
+            buttons = buttons + '<a target="_blank" href="download-video.php?file=' + encodeURIComponent(result['link'][i]['url']) + '&filename=' + encodeURIComponent(JSON.stringify(result['title'])) + '" class="btn btn-sm btn-success mb-1">SES: <span style="text-transform:uppercase">' + result['link'][i]['file'] + '</span> İndir (' + result['link'][i]['size'] + ')(Bitrate: ' + result['link'][i]['quality'] + ')</a><br />';
           }
         }
 
@@ -259,25 +259,3 @@
     </body>
 
 </html>
-
-<!--
-<script>
-  $(function(){
-    setInterval(oneSecondFunction, 1000);
-  });
-
-  function oneSecondFunction() {
-    var reklam = document.querySelector('body > span') !== null;
-    if (reklam) {
-      document.querySelector('body > span').style.visibility = 'hidden';
-    }
-    var form = document.querySelector('body > form') !== null;
-    if (form) {
-      document.querySelector('body > form').style.visibility = 'hidden';
-    }
-    var pndrclcl = document.querySelector('[pndrclcl]') !== null;
-    if (form) {
-      document.querySelector('[pndrclcl]').style.visibility = 'hidden';
-    }
-  }
-</script>-->
