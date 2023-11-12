@@ -3,7 +3,7 @@
 //https://www.googleapis.com/youtube/v3/videos?part=snippet%2Cplayer&chart=mostPopular&locale=TR&regionCode=TR&key=AIzaSyAwonQ8E8KbZBwWWwBF8ARXqgnCOT8mn6o
 
 $EVERY_X_HOUR = 12;
-$YOUTUBE_DATA_API_TOKEN = 'AIzaSyAwonQ8E8KbZBwWWwBF8ARXqgnCOT8mn6o';
+$YOUTUBE_DATA_API_TOKEN = '';
 $MAX_RESULTS = 6;
 
 $last_execution_time = fgets(fopen(__DIR__ . '/last_execution.txt', 'r'));
